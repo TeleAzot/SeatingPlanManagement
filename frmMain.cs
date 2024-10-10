@@ -23,5 +23,15 @@ namespace SeatingPlanManagement
                 grid.Controls.Add(student);
             }
         }
+
+        private void btnImportClassList_MouseHover(object sender, EventArgs e)
+        {
+            hoverToolTip.SetToolTip(btnImportClassList, "Klassenliste aus Zwischenablage importieren");
+        }
+
+        private void btnImportClassList_Click(object sender, EventArgs e)
+        {
+            var data = Clipboard.GetText();
+        }
     }
 }
