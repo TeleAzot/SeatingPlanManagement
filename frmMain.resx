@@ -141,12 +141,12 @@
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFKSURBVEhLYxgF5AJGOTldJXl5bU1CWFZWXQqqh3igb2Tf
-        G5/R/7uiZcZ/Qjg9v/m7hp5FHFQrcSAmrfzDhAXb/zf0LfrfNGEpHHfP2vC/edKy//3zt/5ftOUMGC/c
+        Gx/f/7uiZcZ/Qjg9v/m7hp5FHFQrcSAmrfzDhAXb/zf0LfrfNGEpHHfP2vC/edKy//3zt/5ftOUMGC/c
         fPq/X1jqXqhW4kBkVtHXxglLwJphBuHCIDUhsVmHoFqJAyALQC4m1oIpS/eSZwE2A9Hx1KV7/gcGxz5V
         VtaWhWonDEixIDYp9/+rl3f/p2dkXldS0pKDGoEfoFswadHO/+3TVmPFeZXd/1taW/5/+/qCeEvQLcjI
         r/6/f/8OnPjw4d3///55B7dERkZVGmoUdkB3C2geRPgwVSIZH6YomYIyERhvgdJY+HPWHgVmtF2kZzRY
-        UYEPL9h06n/zxGWkFxW4Cjt0XNs9//+s1YdIL+z0De17iC2u04DFtaa2WSxUK9GAthXOKEAABgYA21J9
-        zVT5SJkAAAAASUVORK5CYII=
+        UYEPL9h06n/zxGWkFxW4Cjt0XNs9//+s1YdIL+z0De17iC2u04DFtaa2WSxUK9GAthXOKEAABgYAh+V9
+        u/7ebhEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnImportClassList.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -163,5 +163,8 @@
   </data>
   <metadata name="hoverToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>60</value>
   </metadata>
 </root>

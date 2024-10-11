@@ -12,6 +12,8 @@ namespace SeatingPlanManagement
 {
     public partial class ucStudent : UserControl
     {
+        private bool _defaultPicture = true;
+
         public ucStudent()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace SeatingPlanManagement
                 if (fileNames.Length > 0)
                 {
                     picStudent.Image = Image.FromFile(fileNames[0]);
+                    _defaultPicture = false;
                 }
             }
         }
@@ -42,5 +45,25 @@ namespace SeatingPlanManagement
         {
             e.Effect = DragDropEffects.Copy;
         }
+
+        public void PrepareForExport()
+        {
+            //hide textboxes and show labels for better design
+            lblFirstname.Text = txtFirstname.Text;
+            lblFirstname.Visible = true;
+
+            lblLastname.Text = txtLastname.Text;
+            lblLastname.Visible = true;
+
+            txtFirstname.Visible = false;
+            txtLastname.Visible = false;
+
+            //if student has no picture -> remove the default placeholder
+            if (_defaultPicture)
+            {
+                picStudent.Image = null;
+            }
+        }
+
     }
 }

@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             gridSeatsLeft = new TableLayoutPanel();
-            label1 = new Label();
+            lblPult = new Label();
             gridSeatsRight = new TableLayoutPanel();
             panel1 = new Panel();
             toolStrip1 = new ToolStrip();
@@ -43,6 +43,7 @@
             label2 = new Label();
             btnImportClassList = new PictureBox();
             hoverToolTip = new ToolTip(components);
+            label3 = new Label();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnImportClassList).BeginInit();
             SuspendLayout();
@@ -68,21 +69,20 @@
             gridSeatsLeft.Size = new Size(15, 15);
             gridSeatsLeft.TabIndex = 3;
             // 
-            // label1
+            // lblPult
             // 
-            label1.BackColor = Color.SaddleBrown;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(453, 673);
-            label1.Name = "label1";
-            label1.Size = new Size(129, 39);
-            label1.TabIndex = 2;
-            label1.Text = "PULT";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            lblPult.BackColor = Color.SaddleBrown;
+            lblPult.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPult.ForeColor = Color.White;
+            lblPult.Location = new Point(453, 673);
+            lblPult.Name = "lblPult";
+            lblPult.Size = new Size(129, 39);
+            lblPult.TabIndex = 0;
+            lblPult.Text = "PULT";
+            lblPult.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // gridSeatsRight
             // 
-            gridSeatsRight.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             gridSeatsRight.AutoSize = true;
             gridSeatsRight.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             gridSeatsRight.BackColor = Color.WhiteSmoke;
@@ -92,7 +92,7 @@
             gridSeatsRight.ColumnStyles.Add(new ColumnStyle());
             gridSeatsRight.ColumnStyles.Add(new ColumnStyle());
             gridSeatsRight.ColumnStyles.Add(new ColumnStyle());
-            gridSeatsRight.Location = new Point(1010, 23);
+            gridSeatsRight.Location = new Point(567, 23);
             gridSeatsRight.Name = "gridSeatsRight";
             gridSeatsRight.RowCount = 4;
             gridSeatsRight.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
@@ -100,7 +100,7 @@
             gridSeatsRight.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             gridSeatsRight.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             gridSeatsRight.Size = new Size(15, 15);
-            gridSeatsRight.TabIndex = 1;
+            gridSeatsRight.TabIndex = 12;
             // 
             // panel1
             // 
@@ -109,7 +109,7 @@
             panel1.Location = new Point(1049, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(1, 714);
-            panel1.TabIndex = 0;
+            panel1.TabIndex = 1;
             // 
             // toolStrip1
             // 
@@ -145,9 +145,11 @@
             btnExport.Size = new Size(28, 28);
             btnExport.Text = "toolStripButton1";
             btnExport.ToolTipText = "Exportieren";
+            btnExport.Click += btnExport_Click;
             // 
             // lvClasslist
             // 
+            lvClasslist.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             lvClasslist.Columns.AddRange(new ColumnHeader[] { colFirstname, colLastname });
             lvClasslist.FullRowSelect = true;
             lvClasslist.GridLines = true;
@@ -170,6 +172,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Location = new Point(1059, 87);
             label2.Name = "label2";
@@ -179,6 +182,7 @@
             // 
             // btnImportClassList
             // 
+            btnImportClassList.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnImportClassList.BorderStyle = BorderStyle.Fixed3D;
             btnImportClassList.Cursor = Cursors.Hand;
             btnImportClassList.Image = (Image)resources.GetObject("btnImportClassList.Image");
@@ -191,20 +195,34 @@
             btnImportClassList.Click += btnImportClassList_Click;
             btnImportClassList.MouseHover += btnImportClassList_MouseHover;
             // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.MidnightBlue;
+            label3.Location = new Point(1062, 419);
+            label3.Name = "label3";
+            label3.Size = new Size(331, 66);
+            label3.TabIndex = 13;
+            label3.Text = "Bilder der Schüler per Drag and Drop auf die Plätze ziehen.";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1405, 738);
+            Controls.Add(label3);
             Controls.Add(btnImportClassList);
             Controls.Add(label2);
             Controls.Add(lvClasslist);
             Controls.Add(toolStrip1);
             Controls.Add(panel1);
             Controls.Add(gridSeatsRight);
-            Controls.Add(label1);
+            Controls.Add(lblPult);
             Controls.Add(gridSeatsLeft);
+            MinimumSize = new Size(1421, 777);
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Seating Plan Management";
@@ -219,7 +237,7 @@
         #endregion
 
         private TableLayoutPanel gridSeatsLeft;
-        private Label label1;
+        private Label lblPult;
         private TableLayoutPanel gridSeatsRight;
         private Panel panel1;
         private ToolStrip toolStrip1;
@@ -231,5 +249,6 @@
         private Label label2;
         private PictureBox btnImportClassList;
         private ToolTip hoverToolTip;
+        private Label label3;
     }
 }
