@@ -51,7 +51,7 @@ namespace SeatingPlanManagement.GUI
         {
             //show SaveFileDialog with the right filter
             if (_selectedFileFormat == FileFormat.PNG)
-                saveFileDialog1.Filter = "Images | *.png";
+                saveFileDialog1.Filter = "Portable Network Graphics | *.png";
             else
                 saveFileDialog1.Filter = "Portable Document | *.pdf";
 

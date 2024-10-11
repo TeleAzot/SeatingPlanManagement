@@ -1,3 +1,4 @@
+using SeatingPlanManagement.Data;
 using System.Drawing;
 
 namespace SeatingPlanManagement.GUI
@@ -33,7 +34,8 @@ namespace SeatingPlanManagement.GUI
 
         private void btnImportClassList_Click(object sender, EventArgs e)
         {
-            var data = Clipboard.GetText();
+            ClasslistImport import = new ClasslistImport(Clipboard.GetText());
+            import.InsertIntoListView(lvClasslist);
         }
 
         private void btnExport_Click(object sender, EventArgs e)

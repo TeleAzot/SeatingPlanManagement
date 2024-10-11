@@ -153,6 +153,7 @@
             lvClasslist.Columns.AddRange(new ColumnHeader[] { colFirstname, colLastname });
             lvClasslist.FullRowSelect = true;
             lvClasslist.GridLines = true;
+            lvClasslist.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             lvClasslist.Location = new Point(1062, 120);
             lvClasslist.Name = "lvClasslist";
             lvClasslist.Size = new Size(334, 281);

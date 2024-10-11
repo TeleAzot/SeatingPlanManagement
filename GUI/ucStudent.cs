@@ -39,7 +39,7 @@ namespace SeatingPlanManagement.GUI
                 if (fileNames.Length > 0)
                 {
                     Image newImg = Image.FromFile(fileNames[0]);
-                    PictureBoxUtility.CorrectExifOrientation(newImg);
+                    ImageUtility.CorrectExifOrientation(newImg);
                     picStudent.Image = newImg;
                     _defaultPicture = false;
                 }

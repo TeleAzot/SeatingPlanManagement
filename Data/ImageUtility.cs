@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeatingPlanManagement.Data
 {
-    internal static class PictureBoxUtility
+    internal static class ImageUtility
     {
         public static void CorrectExifOrientation(Image image)
         {
