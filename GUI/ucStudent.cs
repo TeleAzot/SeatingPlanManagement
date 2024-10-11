@@ -1,4 +1,5 @@
-﻿using SeatingPlanManagement.Properties;
+﻿using SeatingPlanManagement.Data;
+using SeatingPlanManagement.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace SeatingPlanManagement.GUI
 
         private void ucStudent_Load(object sender, EventArgs e)
         {
+            picStudent = picStudent;
             picStudent.AllowDrop = true;
         }
 
@@ -36,7 +38,9 @@ namespace SeatingPlanManagement.GUI
                 string[] fileNames = data as string[];
                 if (fileNames.Length > 0)
                 {
-                    picStudent.Image = Image.FromFile(fileNames[0]);
+                    Image newImg = Image.FromFile(fileNames[0]);
+                    PictureBoxUtility.CorrectExifOrientation(newImg);
+                    picStudent.Image = newImg;
                     _defaultPicture = false;
                 }
             }
@@ -76,18 +80,8 @@ namespace SeatingPlanManagement.GUI
 
             if (_defaultPicture)
             {
-                //picStudent.Image =
+                picStudent.Image = Resources.Drag_Drop96;
             }
-        }
-
-        private Bitmap ByteToImage(byte[] blob)
-        {
-            MemoryStream mStream = new MemoryStream();
-            byte[] pData = blob;
-            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
-            Bitmap bm = new Bitmap(mStream, false);
-            mStream.Dispose();
-            return bm;
         }
 
     }

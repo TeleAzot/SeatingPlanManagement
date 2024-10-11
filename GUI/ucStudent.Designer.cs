@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucStudent));
             picStudent = new PictureBox();
             txtFirstname = new TextBox();
             txtLastname = new TextBox();
@@ -40,7 +39,7 @@
             // picStudent
             // 
             picStudent.BackColor = Color.Transparent;
-            picStudent.Image = (Image)resources.GetObject("picStudent.Image");
+            picStudent.Image = Properties.Resources.Drag_Drop96;
             picStudent.Location = new Point(3, 3);
             picStudent.Name = "picStudent";
             picStudent.Size = new Size(100, 89);

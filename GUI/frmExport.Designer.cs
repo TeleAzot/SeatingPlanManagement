@@ -38,6 +38,7 @@
             txtFilePath = new TextBox();
             btnChooseFilePath = new Button();
             saveFileDialog1 = new SaveFileDialog();
+            panel1 = new Panel();
             SuspendLayout();
             // 
             // lblExportHeader
@@ -148,12 +149,21 @@
             btnChooseFilePath.UseVisualStyleBackColor = false;
             btnChooseFilePath.Click += btnChooseFilePath_Click;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Gray;
+            panel1.Location = new Point(7, 44);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(270, 1);
+            panel1.TabIndex = 9;
+            // 
             // frmExport
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
             ClientSize = new Size(285, 237);
+            Controls.Add(panel1);
             Controls.Add(btnChooseFilePath);
             Controls.Add(txtFilePath);
             Controls.Add(lblPath);
@@ -186,5 +196,6 @@
         private TextBox txtFilePath;
         private Button btnChooseFilePath;
         private SaveFileDialog saveFileDialog1;
+        private Panel panel1;
     }
 }
