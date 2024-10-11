@@ -1,4 +1,4 @@
-﻿namespace SeatingPlanManagement
+﻿namespace SeatingPlanManagement.GUI
 {
     partial class frmMain
     {
@@ -197,7 +197,7 @@
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.MidnightBlue;
             label3.Location = new Point(1062, 419);

@@ -1,4 +1,4 @@
-﻿namespace SeatingPlanManagement
+﻿namespace SeatingPlanManagement.GUI
 {
     partial class ucStudent
     {

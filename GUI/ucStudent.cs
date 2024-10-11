@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SeatingPlanManagement.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SeatingPlanManagement
+namespace SeatingPlanManagement.GUI
 {
     public partial class ucStudent : UserControl
     {
@@ -58,11 +59,35 @@ namespace SeatingPlanManagement
             txtFirstname.Visible = false;
             txtLastname.Visible = false;
 
-            //if student has no picture -> remove the default placeholder
+            //if student has no picture -> remove the default placeholder image
             if (_defaultPicture)
             {
                 picStudent.Image = null;
             }
+        }
+
+        public void ReturnToEditMode()
+        {
+            lblFirstname.Visible = false;
+            lblLastname.Visible = false;
+
+            txtFirstname.Visible = true;
+            txtLastname.Visible = true;
+
+            if (_defaultPicture)
+            {
+                //picStudent.Image =
+            }
+        }
+
+        private Bitmap ByteToImage(byte[] blob)
+        {
+            MemoryStream mStream = new MemoryStream();
+            byte[] pData = blob;
+            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+            Bitmap bm = new Bitmap(mStream, false);
+            mStream.Dispose();
+            return bm;
         }
 
     }

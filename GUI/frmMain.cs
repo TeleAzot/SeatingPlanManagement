@@ -1,6 +1,6 @@
 using System.Drawing;
 
-namespace SeatingPlanManagement
+namespace SeatingPlanManagement.GUI
 {
     public partial class frmMain : Form
     {
@@ -38,8 +38,6 @@ namespace SeatingPlanManagement
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            //toBitmap for testing
-
             foreach(ucStudent student in gridSeatsLeft.Controls)
             {
                 student.PrepareForExport();
@@ -50,26 +48,21 @@ namespace SeatingPlanManagement
                 student.PrepareForExport();
             }
 
-            Bitmap bmpEverything = new Bitmap(gridSeatsLeft.Width + gridSeatsRight.Width + 110, gridSeatsLeft.Height + lblPult.Height + 50);
-            //gridSeatsLeft.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-            
-            Bitmap bmpGridLeft = new Bitmap(gridSeatsLeft.Width, gridSeatsLeft.Height);
-            gridSeatsLeft.DrawToBitmap(bmpGridLeft, new Rectangle(0, 0, bmpGridLeft.Width, bmpGridLeft.Height));
-
-            Bitmap bmpGridRight = new Bitmap(gridSeatsRight.Width, gridSeatsRight.Height);
-            gridSeatsRight.DrawToBitmap(bmpGridRight, new Rectangle(0, 0, bmpGridRight.Width, bmpGridRight.Height));
-
-            Bitmap bmpPult = new Bitmap(lblPult.Width, lblPult.Height);
-            lblPult.DrawToBitmap(bmpPult, new Rectangle(0, 0, lblPult.Width, lblPult.Height));
-
-            using (Graphics g = Graphics.FromImage(bmpEverything))
+            frmExport frm = new frmExport(gridSeatsLeft, gridSeatsRight, lblPult);
+            if (frm.ShowDialog() == DialogResult.OK)
             {
-                g.DrawImage(bmpGridLeft, 0, 0);
-                g.DrawImage(bmpGridRight, gridSeatsRight.Location.X, 0);
-                g.DrawImage(bmpPult, lblPult.Location.X, lblPult.Location.Y);
+                MessageBox.Show("Der Sitzplan wurde erfolgreich exportiert.", "Export erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            bmpEverything.Save(@"D:\Coding\_Resources\bmp.png");
+            foreach (ucStudent student in gridSeatsLeft.Controls)
+            {
+                student.ReturnToEditMode();
+            }
+
+            foreach (ucStudent student in gridSeatsRight.Controls)
+            {
+                student.ReturnToEditMode();
+            }
         }
     }
 }

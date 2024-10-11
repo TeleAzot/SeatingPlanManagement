@@ -61,6 +61,16 @@ namespace SeatingPlanManagement.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
+        internal static byte[] Drag_Drop96 {
+            get {
+                object obj = ResourceManager.GetObject("Drag_Drop96", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
         /// </summary>
         internal static string Save16 {
