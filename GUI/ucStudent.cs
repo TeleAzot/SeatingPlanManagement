@@ -38,7 +38,16 @@ namespace SeatingPlanManagement.GUI
                 string[] fileNames = data as string[];
                 if (fileNames.Length > 0)
                 {
-                    Image newImg = Image.FromFile(fileNames[0]);
+                    Image newImg;
+                    try
+                    {
+                        newImg = Image.FromFile(fileNames[0]);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Das Bild ist zu groß und kann nicht eingefügt werden.", "Fehler beim Einfügen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     ImageUtility.CorrectExifOrientation(newImg);
                     picStudent.Image = newImg;
                     _defaultPicture = false;
@@ -102,6 +111,12 @@ namespace SeatingPlanManagement.GUI
             txtFirstname.Text = frmMain.SelectedStudent.Firstname;
             txtLastname.Text = frmMain.SelectedStudent.Lastname;
             txtCompany.Text = frmMain.SelectedStudent.Company;
+        }
+
+        private void btnDeleteImage_Click(object sender, EventArgs e)
+        {
+            _defaultPicture = true;
+            picStudent.Image = Resources.Drag_Drop96;
         }
     }
 }

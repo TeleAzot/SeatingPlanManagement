@@ -63,6 +63,16 @@ namespace SeatingPlanManagement.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Delete16 {
+            get {
+                object obj = ResourceManager.GetObject("Delete16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Drag_Drop96 {
             get {
                 object obj = ResourceManager.GetObject("Drag_Drop96", resourceCulture);

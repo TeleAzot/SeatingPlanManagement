@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             picStudent = new PictureBox();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            btnDeleteImage = new ToolStripMenuItem();
             txtFirstname = new TextBox();
             txtLastname = new TextBox();
             lblFirstname = new Label();
@@ -36,11 +39,13 @@
             txtCompany = new TextBox();
             lblCompany = new Label();
             ((System.ComponentModel.ISupportInitialize)picStudent).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // picStudent
             // 
             picStudent.BackColor = Color.Transparent;
+            picStudent.ContextMenuStrip = contextMenuStrip1;
             picStudent.Image = Properties.Resources.Drag_Drop96;
             picStudent.Location = new Point(3, 3);
             picStudent.Name = "picStudent";
@@ -50,6 +55,20 @@
             picStudent.TabStop = false;
             picStudent.DragDrop += picStudent_DragDrop;
             picStudent.DragEnter += picStudent_DragEnter;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { btnDeleteImage });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(181, 48);
+            // 
+            // btnDeleteImage
+            // 
+            btnDeleteImage.Image = Properties.Resources.Delete16;
+            btnDeleteImage.Name = "btnDeleteImage";
+            btnDeleteImage.Size = new Size(180, 22);
+            btnDeleteImage.Text = "Bild löschen";
+            btnDeleteImage.Click += btnDeleteImage_Click;
             // 
             // txtFirstname
             // 
@@ -130,6 +149,7 @@
             Size = new Size(106, 178);
             Load += ucStudent_Load;
             ((System.ComponentModel.ISupportInitialize)picStudent).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -143,5 +163,7 @@
         private Label lblLastname;
         public TextBox txtCompany;
         private Label lblCompany;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem btnDeleteImage;
     }
 }
