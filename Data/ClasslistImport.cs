@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.AxHost;
 
 namespace SeatingPlanManagement.Data
 {
@@ -11,13 +12,15 @@ namespace SeatingPlanManagement.Data
     {
         string _rawText;
         ListView _lv;
+        ClassListFormat _format;
 
-        public ClasslistImport(string rawText)
+        public ClasslistImport(string rawText, ClassListFormat format)
         {
             _rawText = rawText;
+            _format = format;
         }
 
-        public void InsertIntoListView(ListView lv)
+        public void Insert(ListView lv)
         {
             _lv = lv;
             lv.Items.Clear();
@@ -32,8 +35,8 @@ namespace SeatingPlanManagement.Data
                     students.Add(student);
                     continue;
                 }
-                MessageBox.Show("Die Liste muss im Format\n<Spalte Vorname, Spalte Nachname>\nimportiert werden.", "Fehler beim Importieren der Klassenliste",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //line couldn't be parsed to student
+                ImportError();
                 return;
             }
 
@@ -42,21 +45,27 @@ namespace SeatingPlanManagement.Data
 
         private bool GetStudentFromLine(string line, out Student student)
         {
+            student = null;
+
             //sometimes empty lines are imported -> student is null but validation is true
             if (!string.IsNullOrEmpty(line))
             {
                 try
                 {
-                    student = new Student { Firstname = line.Split('\t')[0], Lastname = line.Split('\t')[1].Split('\r')[0] };
+                    string[] fields = line.Split('\t');
+                    student = new Student { Firstname = fields[0], Lastname = fields[1].Split('\r')[0] };
+
+                    if (_format == ClassListFormat.WithCompany)
+                    {
+                        student.Company = fields[2].Split('\r')[0];
+                }              
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    student = null;
                     return false;
                 }
             }
-            student = null;
             return true;            
         }
 
@@ -69,14 +78,42 @@ namespace SeatingPlanManagement.Data
 
                 ListViewItem lvItem = new ListViewItem(student.Firstname);
                 lvItem.SubItems.Add(student.Lastname);
+
+                if (_format == ClassListFormat.WithCompany)
+                    lvItem.SubItems.Add(student.Company);
+
                 _lv.Items.Add(lvItem);
             }
         }
+
+        private void ImportError()
+        {
+            string formatText = "";
+            switch (_format)
+            {
+                case ClassListFormat.NameOnly:
+                    formatText = "<Spalte Vorname, Spalte Nachname>";
+                    break;
+                case ClassListFormat.WithCompany:
+                    formatText = "<Spalte Vorname, Spalte Nachname, Spalte Betrieb>";
+                    break;
+            }
+
+            MessageBox.Show($"Die Liste muss im Format\n{formatText}\nimportiert werden.", "Fehler beim Importieren der Klassenliste",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+    }
+
+    public enum ClassListFormat
+    {
+        NameOnly, WithCompany
     }
 
     public class Student
     {
         public string Firstname { get; set; }
         public string Lastname { get; set; }
+        public string Company { get; set; }
     }
 }

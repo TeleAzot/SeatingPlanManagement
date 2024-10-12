@@ -33,6 +33,8 @@
             txtLastname = new TextBox();
             lblFirstname = new Label();
             lblLastname = new Label();
+            txtCompany = new TextBox();
+            lblCompany = new Label();
             ((System.ComponentModel.ISupportInitialize)picStudent).BeginInit();
             SuspendLayout();
             // 
@@ -73,38 +75,59 @@
             // 
             // lblFirstname
             // 
-            lblFirstname.AutoSize = true;
             lblFirstname.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblFirstname.Location = new Point(3, 100);
+            lblFirstname.Location = new Point(3, 98);
             lblFirstname.Name = "lblFirstname";
-            lblFirstname.Size = new Size(0, 13);
+            lblFirstname.Size = new Size(100, 22);
             lblFirstname.TabIndex = 3;
             lblFirstname.TextAlign = ContentAlignment.MiddleCenter;
             lblFirstname.Visible = false;
             // 
             // lblLastname
             // 
-            lblLastname.AutoSize = true;
             lblLastname.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblLastname.Location = new Point(3, 126);
+            lblLastname.Location = new Point(3, 124);
             lblLastname.Name = "lblLastname";
-            lblLastname.Size = new Size(0, 13);
+            lblLastname.Size = new Size(100, 22);
             lblLastname.TabIndex = 4;
             lblLastname.TextAlign = ContentAlignment.MiddleCenter;
             lblLastname.Visible = false;
+            // 
+            // txtCompany
+            // 
+            txtCompany.Font = new Font("Segoe UI", 8.25F);
+            txtCompany.Location = new Point(3, 151);
+            txtCompany.Name = "txtCompany";
+            txtCompany.PlaceholderText = "Betrieb";
+            txtCompany.Size = new Size(100, 22);
+            txtCompany.TabIndex = 5;
+            txtCompany.TextAlign = HorizontalAlignment.Center;
+            // 
+            // lblCompany
+            // 
+            lblCompany.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCompany.Location = new Point(3, 151);
+            lblCompany.Name = "lblCompany";
+            lblCompany.Size = new Size(100, 22);
+            lblCompany.TabIndex = 6;
+            lblCompany.TextAlign = ContentAlignment.MiddleCenter;
+            lblCompany.Visible = false;
             // 
             // ucStudent
             // 
             AllowDrop = true;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(lblLastname);
-            Controls.Add(lblFirstname);
+            BackColor = Color.White;
+            Controls.Add(txtCompany);
             Controls.Add(txtLastname);
             Controls.Add(txtFirstname);
             Controls.Add(picStudent);
+            Controls.Add(lblCompany);
+            Controls.Add(lblFirstname);
+            Controls.Add(lblLastname);
             Name = "ucStudent";
-            Size = new Size(106, 149);
+            Size = new Size(106, 178);
             Load += ucStudent_Load;
             ((System.ComponentModel.ISupportInitialize)picStudent).EndInit();
             ResumeLayout(false);
@@ -118,5 +141,7 @@
         public TextBox txtLastname;
         private Label lblFirstname;
         private Label lblLastname;
+        public TextBox txtCompany;
+        private Label lblCompany;
     }
 }

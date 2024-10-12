@@ -60,8 +60,12 @@ namespace SeatingPlanManagement.GUI
             lblLastname.Text = txtLastname.Text;
             lblLastname.Visible = true;
 
+            lblCompany.Text = txtCompany.Text;
+            lblCompany.Visible = true;
+
             txtFirstname.Visible = false;
             txtLastname.Visible = false;
+            txtCompany.Visible = false;
 
             //if student has no picture -> remove the default placeholder image
             if (_defaultPicture)
@@ -74,9 +78,11 @@ namespace SeatingPlanManagement.GUI
         {
             lblFirstname.Visible = false;
             lblLastname.Visible = false;
+            lblCompany.Visible = false;
 
             txtFirstname.Visible = true;
             txtLastname.Visible = true;
+            txtCompany.Visible = true;
 
             if (_defaultPicture)
             {
@@ -88,12 +94,14 @@ namespace SeatingPlanManagement.GUI
         {
             txtFirstname.Text = frmMain.SelectedStudent.Firstname;
             txtLastname.Text = frmMain.SelectedStudent.Lastname;
+            txtCompany.Text = frmMain.SelectedStudent.Company;
         }
 
         private void txtLastname_DoubleClick(object sender, EventArgs e)
         {
             txtFirstname.Text = frmMain.SelectedStudent.Firstname;
-            txtLastname.Text= frmMain.SelectedStudent.Lastname;
+            txtLastname.Text = frmMain.SelectedStudent.Lastname;
+            txtCompany.Text = frmMain.SelectedStudent.Company;
         }
     }
 }

@@ -6,6 +6,7 @@ namespace SeatingPlanManagement.GUI
     public partial class frmMain : Form
     {
         public static Student SelectedStudent { get; private set; } = new Student();
+        private ClassListFormat _classListFormat = ClassListFormat.NameOnly;
 
         public frmMain()
         {
@@ -34,8 +35,8 @@ namespace SeatingPlanManagement.GUI
 
         private void btnImportClassList_Click(object sender, EventArgs e)
         {
-            ClasslistImport import = new ClasslistImport(Clipboard.GetText());
-            import.InsertIntoListView(lvClasslist);
+            ClasslistImport import = new ClasslistImport(Clipboard.GetText(), _classListFormat);
+            import.Insert(lvClasslist);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -74,7 +75,28 @@ namespace SeatingPlanManagement.GUI
                 //get the currently selected Student in the classlist
                 SelectedStudent.Firstname = lvClasslist.SelectedItems[0].Text;
                 SelectedStudent.Lastname = lvClasslist.SelectedItems[0].SubItems[1].Text;
-            }            
+
+                if (lvClasslist.Columns.Count >= 3)
+                {
+                    SelectedStudent.Company = lvClasslist.SelectedItems[0].SubItems[2].Text;
+                }
+            }
+        }
+
+        private void chkCompany_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkCompany.Checked)
+            {
+                _classListFormat = ClassListFormat.WithCompany;
+                lvClasslist.Columns.Add("Betrieb");
+                lvClasslist.Columns[2].Width = 207;
+            }
+            else
+            {
+                _classListFormat = ClassListFormat.NameOnly;
+                if (lvClasslist.Columns.Count >= 3)
+                    lvClasslist.Columns.RemoveAt(2);
+            }
         }
     }
 }

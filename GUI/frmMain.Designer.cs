@@ -45,6 +45,8 @@
             hoverToolTip = new ToolTip(components);
             label3 = new Label();
             label1 = new Label();
+            lblCopyright = new Label();
+            chkCompany = new CheckBox();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnImportClassList).BeginInit();
             SuspendLayout();
@@ -73,9 +75,10 @@
             // lblPult
             // 
             lblPult.BackColor = Color.White;
+            lblPult.BorderStyle = BorderStyle.FixedSingle;
             lblPult.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPult.ForeColor = Color.Black;
-            lblPult.Location = new Point(453, 673);
+            lblPult.Location = new Point(453, 782);
             lblPult.Name = "lblPult";
             lblPult.Size = new Size(129, 39);
             lblPult.TabIndex = 0;
@@ -109,7 +112,7 @@
             panel1.BackColor = Color.Gray;
             panel1.Location = new Point(1049, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1, 714);
+            panel1.Size = new Size(1, 819);
             panel1.TabIndex = 1;
             // 
             // toolStrip1
@@ -121,9 +124,9 @@
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new Size(24, 24);
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnSaveDesign, btnExport });
-            toolStrip1.Location = new Point(1059, 23);
+            toolStrip1.Location = new Point(1067, 23);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(337, 31);
+            toolStrip1.Size = new Size(432, 31);
             toolStrip1.TabIndex = 4;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -155,9 +158,9 @@
             lvClasslist.FullRowSelect = true;
             lvClasslist.GridLines = true;
             lvClasslist.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-            lvClasslist.Location = new Point(1062, 120);
+            lvClasslist.Location = new Point(1070, 120);
             lvClasslist.Name = "lvClasslist";
-            lvClasslist.Size = new Size(334, 281);
+            lvClasslist.Size = new Size(429, 386);
             lvClasslist.TabIndex = 5;
             lvClasslist.UseCompatibleStateImageBehavior = false;
             lvClasslist.View = View.Details;
@@ -166,18 +169,18 @@
             // colFirstname
             // 
             colFirstname.Text = "Vorname";
-            colFirstname.Width = 155;
+            colFirstname.Width = 207;
             // 
             // colLastname
             // 
             colLastname.Text = "Nachname";
-            colLastname.Width = 156;
+            colLastname.Width = 207;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(1059, 87);
+            label2.Location = new Point(1067, 87);
             label2.Name = "label2";
             label2.Size = new Size(70, 15);
             label2.TabIndex = 6;
@@ -189,7 +192,7 @@
             btnImportClassList.BorderStyle = BorderStyle.Fixed3D;
             btnImportClassList.Cursor = Cursors.Hand;
             btnImportClassList.Image = (Image)resources.GetObject("btnImportClassList.Image");
-            btnImportClassList.Location = new Point(1135, 83);
+            btnImportClassList.Location = new Point(1143, 83);
             btnImportClassList.Name = "btnImportClassList";
             btnImportClassList.Size = new Size(28, 28);
             btnImportClassList.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -203,7 +206,7 @@
             label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.MidnightBlue;
-            label3.Location = new Point(1062, 419);
+            label3.Location = new Point(1121, 522);
             label3.Name = "label3";
             label3.Size = new Size(331, 66);
             label3.TabIndex = 13;
@@ -215,19 +218,43 @@
             label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.MidnightBlue;
-            label1.Location = new Point(1065, 492);
+            label1.Location = new Point(1121, 619);
             label1.Name = "label1";
             label1.Size = new Size(331, 66);
             label1.TabIndex = 14;
             label1.Text = "Schüler aus der Liste markieren und per Doppelklick auf ein Textfeld eines Platzes einfügen.";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // lblCopyright
+            // 
+            lblCopyright.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblCopyright.AutoSize = true;
+            lblCopyright.Location = new Point(1353, 816);
+            lblCopyright.Name = "lblCopyright";
+            lblCopyright.Size = new Size(146, 15);
+            lblCopyright.TabIndex = 15;
+            lblCopyright.Text = "© Tim Stock Oktober 2024";
+            // 
+            // chkCompany
+            // 
+            chkCompany.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            chkCompany.AutoSize = true;
+            chkCompany.Location = new Point(1391, 86);
+            chkCompany.Name = "chkCompany";
+            chkCompany.Size = new Size(108, 19);
+            chkCompany.TabIndex = 16;
+            chkCompany.Text = "Spalte \"Betrieb\"";
+            chkCompany.UseVisualStyleBackColor = true;
+            chkCompany.CheckedChanged += chkCompany_CheckedChanged;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1405, 738);
+            ClientSize = new Size(1511, 843);
+            Controls.Add(chkCompany);
+            Controls.Add(lblCopyright);
             Controls.Add(label1);
             Controls.Add(label3);
             Controls.Add(btnImportClassList);
@@ -238,7 +265,7 @@
             Controls.Add(gridSeatsRight);
             Controls.Add(lblPult);
             Controls.Add(gridSeatsLeft);
-            MinimumSize = new Size(1421, 777);
+            MinimumSize = new Size(1527, 882);
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Seating Plan Management";
@@ -267,5 +294,7 @@
         private ToolTip hoverToolTip;
         private Label label3;
         private Label label1;
+        private Label lblCopyright;
+        private CheckBox chkCompany;
     }
 }
