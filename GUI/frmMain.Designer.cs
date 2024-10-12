@@ -44,6 +44,7 @@
             btnImportClassList = new PictureBox();
             hoverToolTip = new ToolTip(components);
             label3 = new Label();
+            label1 = new Label();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnImportClassList).BeginInit();
             SuspendLayout();
@@ -52,7 +53,7 @@
             // 
             gridSeatsLeft.AutoSize = true;
             gridSeatsLeft.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            gridSeatsLeft.BackColor = Color.WhiteSmoke;
+            gridSeatsLeft.BackColor = Color.White;
             gridSeatsLeft.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
             gridSeatsLeft.ColumnCount = 4;
             gridSeatsLeft.ColumnStyles.Add(new ColumnStyle());
@@ -71,9 +72,9 @@
             // 
             // lblPult
             // 
-            lblPult.BackColor = Color.SaddleBrown;
+            lblPult.BackColor = Color.White;
             lblPult.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPult.ForeColor = Color.White;
+            lblPult.ForeColor = Color.Black;
             lblPult.Location = new Point(453, 673);
             lblPult.Name = "lblPult";
             lblPult.Size = new Size(129, 39);
@@ -85,7 +86,7 @@
             // 
             gridSeatsRight.AutoSize = true;
             gridSeatsRight.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            gridSeatsRight.BackColor = Color.WhiteSmoke;
+            gridSeatsRight.BackColor = Color.White;
             gridSeatsRight.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
             gridSeatsRight.ColumnCount = 4;
             gridSeatsRight.ColumnStyles.Add(new ColumnStyle());
@@ -160,6 +161,7 @@
             lvClasslist.TabIndex = 5;
             lvClasslist.UseCompatibleStateImageBehavior = false;
             lvClasslist.View = View.Details;
+            lvClasslist.SelectedIndexChanged += lvClasslist_SelectedIndexChanged;
             // 
             // colFirstname
             // 
@@ -208,12 +210,25 @@
             label3.Text = "Bilder der Schüler per Drag and Drop auf die Plätze ziehen.";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.MidnightBlue;
+            label1.Location = new Point(1065, 492);
+            label1.Name = "label1";
+            label1.Size = new Size(331, 66);
+            label1.TabIndex = 14;
+            label1.Text = "Schüler aus der Liste markieren und per Doppelklick auf ein Textfeld eines Platzes einfügen.";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1405, 738);
+            Controls.Add(label1);
             Controls.Add(label3);
             Controls.Add(btnImportClassList);
             Controls.Add(label2);
@@ -251,5 +266,6 @@
         private PictureBox btnImportClassList;
         private ToolTip hoverToolTip;
         private Label label3;
+        private Label label1;
     }
 }

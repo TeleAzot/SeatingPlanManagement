@@ -84,5 +84,16 @@ namespace SeatingPlanManagement.GUI
             }
         }
 
+        private void txtFirstname_DoubleClick(object sender, EventArgs e)
+        {
+            txtFirstname.Text = frmMain.SelectedStudent.Firstname;
+            txtLastname.Text = frmMain.SelectedStudent.Lastname;
+        }
+
+        private void txtLastname_DoubleClick(object sender, EventArgs e)
+        {
+            txtFirstname.Text = frmMain.SelectedStudent.Firstname;
+            txtLastname.Text= frmMain.SelectedStudent.Lastname;
+        }
     }
 }

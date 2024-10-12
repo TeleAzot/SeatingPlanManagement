@@ -5,6 +5,8 @@ namespace SeatingPlanManagement.GUI
 {
     public partial class frmMain : Form
     {
+        public static Student SelectedStudent { get; private set; } = new Student();
+
         public frmMain()
         {
             InitializeComponent();
@@ -21,8 +23,6 @@ namespace SeatingPlanManagement.GUI
             for (int i = 0; i < 16; i++)
             {
                 ucStudent student = new ucStudent();
-                //student.picStudent.Image = Image.FromFile(@"D:\Coding\_Resources\Info.png");
-
                 grid.Controls.Add(student);
             }
         }
@@ -40,7 +40,7 @@ namespace SeatingPlanManagement.GUI
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            foreach(ucStudent student in gridSeatsLeft.Controls)
+            foreach (ucStudent student in gridSeatsLeft.Controls)
             {
                 student.PrepareForExport();
             }
@@ -65,6 +65,16 @@ namespace SeatingPlanManagement.GUI
             {
                 student.ReturnToEditMode();
             }
+        }
+
+        private void lvClasslist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvClasslist.SelectedItems.Count > 0)
+            {
+                //get the currently selected Student in the classlist
+                SelectedStudent.Firstname = lvClasslist.SelectedItems[0].Text;
+                SelectedStudent.Lastname = lvClasslist.SelectedItems[0].SubItems[1].Text;
+            }            
         }
     }
 }

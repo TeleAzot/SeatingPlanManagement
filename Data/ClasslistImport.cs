@@ -20,6 +20,7 @@ namespace SeatingPlanManagement.Data
         public void InsertIntoListView(ListView lv)
         {
             _lv = lv;
+            lv.Items.Clear();
 
             var lines = _rawText.Split('\n');
 

@@ -58,6 +58,7 @@
             txtFirstname.Size = new Size(100, 22);
             txtFirstname.TabIndex = 1;
             txtFirstname.TextAlign = HorizontalAlignment.Center;
+            txtFirstname.DoubleClick += txtFirstname_DoubleClick;
             // 
             // txtLastname
             // 
@@ -68,6 +69,7 @@
             txtLastname.Size = new Size(100, 22);
             txtLastname.TabIndex = 2;
             txtLastname.TextAlign = HorizontalAlignment.Center;
+            txtLastname.DoubleClick += txtLastname_DoubleClick;
             // 
             // lblFirstname
             // 
