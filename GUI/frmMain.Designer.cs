@@ -265,6 +265,7 @@
             Controls.Add(gridSeatsRight);
             Controls.Add(lblPult);
             Controls.Add(gridSeatsLeft);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1527, 882);
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;

@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>SPM_Icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="SPM_Icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="PDFsharp" Version="6.1.1" />
