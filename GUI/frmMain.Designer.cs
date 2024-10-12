@@ -78,7 +78,7 @@
             lblPult.BorderStyle = BorderStyle.FixedSingle;
             lblPult.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPult.ForeColor = Color.Black;
-            lblPult.Location = new Point(453, 782);
+            lblPult.Location = new Point(456, 785);
             lblPult.Name = "lblPult";
             lblPult.Size = new Size(129, 39);
             lblPult.TabIndex = 0;

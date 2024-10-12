@@ -55,8 +55,7 @@ namespace SeatingPlanManagement.Data
             {
                 MessageBox.Show(ex.Message, "Fehler beim Exportieren!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
-            }
-            
+            }            
         }
     }
 }

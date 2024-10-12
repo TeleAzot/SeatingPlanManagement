@@ -70,14 +70,20 @@ namespace SeatingPlanManagement.GUI
                 switch (_selectedFileFormat)
                 {
                     case FileFormat.PNG:
-                        PngExport export = new PngExport(_gridLeft, _gridRight, _pult, _selectedFileName);
-                        if (export.Export())
+                        PngExport pngExport = new PngExport(_gridLeft, _gridRight, _pult, _selectedFileName);
+                        if (pngExport.Export())
                         {
                             DialogResult = DialogResult.OK;
                             Close();
                         }                        
                         break;
                     case FileFormat.PDF:
+                        PdfExport pdfExport = new PdfExport(_gridLeft, _gridRight, _pult, _selectedFileName);
+                        if (pdfExport.Export())
+                        {
+                            DialogResult = DialogResult.OK;
+                            Close();
+                        }
                         break;
                 }
             }
