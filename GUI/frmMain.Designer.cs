@@ -47,6 +47,7 @@
             label1 = new Label();
             lblCopyright = new Label();
             chkCompany = new CheckBox();
+            saveFileDialog1 = new SaveFileDialog();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnImportClassList).BeginInit();
             SuspendLayout();
@@ -139,6 +140,7 @@
             btnSaveDesign.Size = new Size(28, 28);
             btnSaveDesign.Text = "toolStripButton1";
             btnSaveDesign.ToolTipText = "Entwurf speichern";
+            btnSaveDesign.Click += btnSaveDesign_Click;
             // 
             // btnExport
             // 
@@ -247,6 +249,11 @@
             chkCompany.UseVisualStyleBackColor = true;
             chkCompany.CheckedChanged += chkCompany_CheckedChanged;
             // 
+            // saveFileDialog1
+            // 
+            saveFileDialog1.FileName = "Class";
+            saveFileDialog1.Filter = "Seating Plan Dateien | *.sp";
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -297,5 +304,6 @@
         private Label label1;
         private Label lblCopyright;
         private CheckBox chkCompany;
+        private SaveFileDialog saveFileDialog1;
     }
 }

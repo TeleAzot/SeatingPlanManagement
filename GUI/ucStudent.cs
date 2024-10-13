@@ -14,7 +14,8 @@ namespace SeatingPlanManagement.GUI
 {
     public partial class ucStudent : UserControl
     {
-        private bool _defaultPicture = true;
+        public Guid GUID { get; init; } = Guid.NewGuid();
+        public bool DefaultPicture { get; private set; } = true;
 
         public ucStudent()
         {
@@ -50,7 +51,7 @@ namespace SeatingPlanManagement.GUI
                     }
                     ImageUtility.CorrectExifOrientation(newImg);
                     picStudent.Image = newImg;
-                    _defaultPicture = false;
+                    DefaultPicture = false;
                 }
             }
         }
@@ -77,7 +78,7 @@ namespace SeatingPlanManagement.GUI
             txtCompany.Visible = false;
 
             //if student has no picture -> remove the default placeholder image
-            if (_defaultPicture)
+            if (DefaultPicture)
             {
                 picStudent.Image = null;
             }
@@ -93,7 +94,7 @@ namespace SeatingPlanManagement.GUI
             txtLastname.Visible = true;
             txtCompany.Visible = true;
 
-            if (_defaultPicture)
+            if (DefaultPicture)
             {
                 picStudent.Image = Resources.Drag_Drop96;
             }
@@ -115,7 +116,7 @@ namespace SeatingPlanManagement.GUI
 
         private void btnDeleteImage_Click(object sender, EventArgs e)
         {
-            _defaultPicture = true;
+            DefaultPicture = true;
             picStudent.Image = Resources.Drag_Drop96;
         }
     }

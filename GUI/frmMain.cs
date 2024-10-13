@@ -98,5 +98,14 @@ namespace SeatingPlanManagement.GUI
                     lvClasslist.Columns.RemoveAt(2);
             }
         }
+
+        private async void btnSaveDesign_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                SaveSeatingPlan savePlan = new SaveSeatingPlan(saveFileDialog1.FileName, gridSeatsLeft, gridSeatsRight);
+                await savePlan.Save();
+            }
+        }
     }
 }
