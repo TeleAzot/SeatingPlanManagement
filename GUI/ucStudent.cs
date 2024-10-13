@@ -14,8 +14,8 @@ namespace SeatingPlanManagement.GUI
 {
     public partial class ucStudent : UserControl
     {
-        public Guid GUID { get; init; } = Guid.NewGuid();
-        public bool DefaultPicture { get; private set; } = true;
+        public Guid GUID { get; set; } = Guid.NewGuid();
+        public bool DefaultPicture { get; set; } = true;
 
         public ucStudent()
         {

@@ -99,12 +99,21 @@ namespace SeatingPlanManagement.GUI
             }
         }
 
-        private async void btnSaveDesign_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (sfDialog.ShowDialog() == DialogResult.OK)
             {
-                SaveSeatingPlan savePlan = new SaveSeatingPlan(saveFileDialog1.FileName, gridSeatsLeft, gridSeatsRight);
-                await savePlan.Save();
+                SaveSeatingPlan savePlan = new SaveSeatingPlan(sfDialog.FileName, gridSeatsLeft, gridSeatsRight);
+                savePlan.Save();
+            }
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            if (ofDialog.ShowDialog() == DialogResult.OK)
+            {
+                OpenSeatingPlan openPlan = new OpenSeatingPlan(ofDialog.FileName, gridSeatsLeft, gridSeatsRight);
+                openPlan.Open();
             }
         }
     }

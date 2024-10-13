@@ -2,6 +2,7 @@
 using SeatingPlanManagement.GUI;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,18 +15,18 @@ namespace SeatingPlanManagement.Data
         private TableLayoutPanel _gridLeft;
         private TableLayoutPanel _gridRight;
 
-        private readonly string pathToPictures;
+        private readonly string _pathToPictures;
 
         public SaveSeatingPlan(string pathToSave, TableLayoutPanel gridLeft, TableLayoutPanel gridRight)
         {
-            pathToPictures = $@"C:\Users\{Environment.UserName}\AppData\Local\SeatingPlanManagement\Images\";
+            _pathToPictures = $@"C:\Users\{Environment.UserName}\AppData\Local\SeatingPlanManagement\Images\";
 
             _pathToSave = pathToSave;
             _gridLeft = gridLeft;
             _gridRight = gridRight;
         }
 
-        public async Task Save()
+        public void Save()
         {
             SaveImagesInLocalAppData(_gridLeft);
             SaveImagesInLocalAppData(_gridRight);
@@ -33,17 +34,25 @@ namespace SeatingPlanManagement.Data
             IEnumerable<Student> studentsLeft = StudentsInGrid(_gridLeft);
             IEnumerable<Student> studentsRight = StudentsInGrid(_gridRight);
 
-            await WriteDataToFile(studentsLeft, studentsRight);
+            WriteDataToFile(studentsLeft, studentsRight);
         }
 
         private void SaveImagesInLocalAppData(TableLayoutPanel grid)
         {
-            Directory.CreateDirectory(pathToPictures);
+            Directory.CreateDirectory(_pathToPictures);
 
             foreach (ucStudent student in grid.Controls)
             {
+                if (student == null) continue;
+
                 if (!student.DefaultPicture)
-                    student.picStudent.Image.Save(pathToPictures + student.GUID + ".png");
+                {
+                    string path = $"{_pathToPictures}{student.GUID.ToString()}.png";
+                    if (!File.Exists(path))
+                    {
+                        student.picStudent.Image.Save(path, ImageFormat.Png);
+                    }
+                }
             }
         }
 
@@ -68,24 +77,24 @@ namespace SeatingPlanManagement.Data
             }
         }
 
-        private async Task WriteDataToFile(IEnumerable<Student> studentsLeft, IEnumerable<Student> studentsRight)
+        private void WriteDataToFile(IEnumerable<Student> studentsLeft, IEnumerable<Student> studentsRight)
         {
             try
             {
                 using (StreamWriter writer = new StreamWriter(_pathToSave))
                 {
-                    await writer.WriteLineAsync("#LEFT");
+                    writer.WriteLine("#LEFT");
                     foreach (Student student in studentsLeft)
                     {
                         //append line with ';'-seperated data of student
-                        await writer.WriteLineAsync(StudentToFileLine(student));
+                        writer.WriteLine(StudentToFileLine(student));
                     }
 
-                    await writer.WriteLineAsync("#RIGHT");
+                    writer.WriteLine("#RIGHT");
                     foreach (Student student in studentsRight)
                     {
                         //append line with ';'-seperated data of student
-                        await writer.WriteLineAsync(StudentToFileLine(student));
+                        writer.WriteLine(StudentToFileLine(student));
                     }
                     writer.Close();
                 }

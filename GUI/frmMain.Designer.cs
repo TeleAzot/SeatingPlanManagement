@@ -35,7 +35,8 @@
             gridSeatsRight = new TableLayoutPanel();
             panel1 = new Panel();
             toolStrip1 = new ToolStrip();
-            btnSaveDesign = new ToolStripButton();
+            btnSave = new ToolStripButton();
+            btnOpen = new ToolStripButton();
             btnExport = new ToolStripButton();
             lvClasslist = new ListView();
             colFirstname = new ColumnHeader();
@@ -47,7 +48,8 @@
             label1 = new Label();
             lblCopyright = new Label();
             chkCompany = new CheckBox();
-            saveFileDialog1 = new SaveFileDialog();
+            sfDialog = new SaveFileDialog();
+            ofDialog = new OpenFileDialog();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnImportClassList).BeginInit();
             SuspendLayout();
@@ -124,23 +126,34 @@
             toolStrip1.Dock = DockStyle.None;
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new Size(24, 24);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnSaveDesign, btnExport });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnSave, btnOpen, btnExport });
             toolStrip1.Location = new Point(1067, 23);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(432, 31);
             toolStrip1.TabIndex = 4;
             toolStrip1.Text = "toolStrip1";
             // 
-            // btnSaveDesign
+            // btnSave
             // 
-            btnSaveDesign.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnSaveDesign.Image = (Image)resources.GetObject("btnSaveDesign.Image");
-            btnSaveDesign.ImageTransparentColor = Color.Magenta;
-            btnSaveDesign.Name = "btnSaveDesign";
-            btnSaveDesign.Size = new Size(28, 28);
-            btnSaveDesign.Text = "toolStripButton1";
-            btnSaveDesign.ToolTipText = "Entwurf speichern";
-            btnSaveDesign.Click += btnSaveDesign_Click;
+            btnSave.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnSave.Image = (Image)resources.GetObject("btnSave.Image");
+            btnSave.ImageTransparentColor = Color.Magenta;
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(28, 28);
+            btnSave.Text = "toolStripButton1";
+            btnSave.ToolTipText = "Sitzplan speichern";
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnOpen
+            // 
+            btnOpen.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnOpen.Image = Properties.Resources.OpenFile24;
+            btnOpen.ImageTransparentColor = Color.Magenta;
+            btnOpen.Name = "btnOpen";
+            btnOpen.Size = new Size(28, 28);
+            btnOpen.Text = "toolStripButton1";
+            btnOpen.ToolTipText = "Sitzplan öffnen";
+            btnOpen.Click += btnOpen_Click;
             // 
             // btnExport
             // 
@@ -249,10 +262,13 @@
             chkCompany.UseVisualStyleBackColor = true;
             chkCompany.CheckedChanged += chkCompany_CheckedChanged;
             // 
-            // saveFileDialog1
+            // sfDialog
             // 
-            saveFileDialog1.FileName = "Class";
-            saveFileDialog1.Filter = "Seating Plan Dateien | *.sp";
+            sfDialog.Filter = "Seating Plan Dateien | *.sp";
+            // 
+            // ofDialog
+            // 
+            ofDialog.Filter = "Seating Plan Dateien | *.sp";
             // 
             // frmMain
             // 
@@ -292,7 +308,7 @@
         private TableLayoutPanel gridSeatsRight;
         private Panel panel1;
         private ToolStrip toolStrip1;
-        private ToolStripButton btnSaveDesign;
+        private ToolStripButton btnSave;
         private ToolStripButton btnExport;
         private ListView lvClasslist;
         private ColumnHeader colFirstname;
@@ -304,6 +320,8 @@
         private Label label1;
         private Label lblCopyright;
         private CheckBox chkCompany;
-        private SaveFileDialog saveFileDialog1;
+        private SaveFileDialog sfDialog;
+        private ToolStripButton btnOpen;
+        private OpenFileDialog ofDialog;
     }
 }
