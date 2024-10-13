@@ -16,8 +16,13 @@ namespace SeatingPlanManagement.Data
         private Label _pult;
         private string _pathToSave;
 
+        private readonly string _pathToTmpBmp;
+
         public PdfExport(TableLayoutPanel gridLeft, TableLayoutPanel gridRight, Label lblPult, string pathToSave)
         {
+            _pathToTmpBmp = $@"C:\Users\{Environment.UserName}\AppData\Local\SeatingPlanManagement\tmp\";
+            Directory.CreateDirectory(_pathToTmpBmp);
+
             //get the controls that are needed for export
             _gridLeft = gridLeft;
             _gridRight = gridRight;
@@ -31,7 +36,10 @@ namespace SeatingPlanManagement.Data
             {
                 Bitmap bmp = GenerateBmp();
                 //save bmp so that pdfsharp can access it for drawing on page
-                bmp.Save(Application.StartupPath + "tmp.png");
+                if (File.Exists(_pathToTmpBmp + "tmp.png"))
+                    File.Delete(_pathToTmpBmp + "tmp.png");
+
+                bmp.Save(_pathToTmpBmp + "tmp.png");
 
                 PdfDocument document = new PdfDocument();
 
@@ -85,7 +93,7 @@ namespace SeatingPlanManagement.Data
 
         private void DrawImageOnPage(XGraphics gfx)
         {
-            XImage image = XImage.FromFile(Application.StartupPath + "tmp.png");
+            XImage image = XImage.FromFile(_pathToTmpBmp + "tmp.png");
 
             //resize the image to fit on the page
             double width = image.PixelWidth * 0.63;

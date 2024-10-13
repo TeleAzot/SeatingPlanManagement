@@ -6,11 +6,11 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>SPM_Icon.ico</ApplicationIcon>
+    <ApplicationIcon>SPM.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="SPM_Icon.ico" />
+    <Content Include="SPM.ico" />
   </ItemGroup>
 
   <ItemGroup>

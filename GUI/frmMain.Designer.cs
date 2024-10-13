@@ -291,6 +291,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1527, 882);
             Name = "frmMain";
+            ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Seating Plan Management";
             Load += frmMain_Load;
